@@ -1,6 +1,7 @@
 let map;
 let citys = [];
 
+// 初始化城市数据
 function initCitys(callback) {
 	let names = ['Zhengzhou', 'Kaifeng', 'Luoyang', 'Xuchang', 'Zhoukou', 'Zhumadian', 'Xinyang', 'Anyang', 'Hebi', 'Xinxiang', 'Puyang', 'Jiaozuo', 'Sanmenxia', 'Pingdingshan', 'Nanyang', 'Shangqiu'];
 	citys.counter = 0;
@@ -34,6 +35,7 @@ function initCitys(callback) {
 	});
 }
 
+// 显示或点击某城市时展示地图上标记跳动效果
 function shakeMarker(marker) {
 	marker.setAnimation(google.maps.Animation.BOUNCE);
 	setTimeout(function() {
@@ -41,6 +43,7 @@ function shakeMarker(marker) {
 	}, 1000);
 }
 
+// 点击城市列表项或标记时展示一张相关图片（来自Flickr）
 function showInfoWindow(city) {
 	citys.forEach(function(city) {
 		city.infoWindow && city.infoWindow.close();
@@ -66,6 +69,7 @@ function showInfoWindow(city) {
 	shakeMarker(city.marker);
 }
 
+// view model
 function HenanCityModel() {
 	let model = this;
 
@@ -92,6 +96,7 @@ function HenanCityModel() {
 	};
 }
 
+// Google地图初始化回调
 function initMap() {
 	map = new google.maps.Map(document.getElementById('map'), {
 		center: {lat: 34.0655761, lng: 113.7350095},
