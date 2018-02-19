@@ -53,7 +53,7 @@ function showInfoWindow(city) {
 	$.ajax({
 		type: 'GET',
 		url: 'https://api.flickr.com/services/rest/',
-		data: {method: 'flickr.photos.search', api_key: '64147ab7d6588a0822243b78336b26b9', text: city.name, per_page: 1, format: 'json', nojsoncallback: 1},
+		data: {method: 'flickr.photos.search', api_key: 'f464d35552147c28060939f567888a54', text: city.name, per_page: 1, format: 'json', nojsoncallback: 1},
 		success: function(resp) {
 			if (resp.stat === 'ok' && resp.photos.photo.length > 0) {
 				let photoInfo = resp.photos.photo[0];
@@ -105,4 +105,10 @@ function initMap() {
 	initCitys(function() {
 		ko.applyBindings(new HenanCityModel());
 	});
+}
+
+// 处理地图载入错误
+function onMapLoadError() {
+	console.log(arguments);
+	alert('Can not load Google map!');
 }
